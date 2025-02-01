@@ -2,7 +2,7 @@ const { Telegraf } = require("telegraf");
 const express = require("express");
 const games = require("./games"); // Подключаем игры
 
-const bot = new Telegraf("ТОКЕН_БОТА");
+const bot = new Telegraf("7992499243:AAHpCRB8xoCtLJXMlvD19vaFIoJ9uhyK8s8");
 const app = express();
 app.use(express.json());
 
