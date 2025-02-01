@@ -9,7 +9,7 @@ bot.command("start", async (ctx) => {
     await ctx.reply("Выберите игру:", {
         reply_markup: {
             keyboard: [
-                [{ text: "🎮 Играть", web_app: { url: "reservitorgamebone-production.up.railway.app" } }]
+                [{ text: "🎮 Играть", web_app: { url: "https://reservitorgamebone-production.up.railway.app" } }]
             ],
             resize_keyboard: true
         }
