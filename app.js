@@ -8,10 +8,9 @@ const bot = new Telegraf("7650700427:AAEDBh-tjWbTLaNYbiAgN6F0HrUMzhRlNr4");
 bot.command("start", async (ctx) => {
     await ctx.reply("Выберите действие:", {
         reply_markup: {
-            keyboard: [
-                [{ text: "📜 Список команд" }],
-            ],
-            resize_keyboard: true
+            inline_keyboard: [
+                [{ text: "📜 Список команд", callback_data: "command_list" }]
+            ]
         }
     });
 });
