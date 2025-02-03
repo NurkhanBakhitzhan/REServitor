@@ -1,52 +1,23 @@
 const { Telegraf } = require("telegraf");
+const { handleCommands } = require("./commands");
+const { handleGames } = require("./games");
 
-const bot = new Telegraf("7992499243:AAHpCRB8xoCtLJXMlvD19vaFIoJ9uhyK8s8");
+const bot = new Telegraf("7650700427:AAEDBh-tjWbTLaNYbiAgN6F0HrUMzhRlNr4");
 
-// Главное меню выбора игры
+// Главное меню
 bot.command("start", async (ctx) => {
-    await ctx.reply("Выберите игру:", {
+    await ctx.reply("Выберите действие:", {
         reply_markup: {
             keyboard: [
-                [{ text: "🎲 Кости" }],
-                [{ text: "🔙 Назад" }]
+                [{ text: "📜 Список команд" }],
             ],
             resize_keyboard: true
         }
     });
 });
 
-// Меню выбора режима для игры "Кости"
-bot.hears("🎲 Кости", async (ctx) => {
-    await ctx.reply("Выберите режим игры:", {
-        reply_markup: {
-            keyboard: [
-                [{ text: "🎲 Одиночная игра" }],
-                [{ text: "👥 Мультиплеер" }],
-                [{ text: "🔙 Назад" }]
-            ],
-            resize_keyboard: true
-        }
-    });
-});
-
-// Одиночная игра в кости
-bot.hears("🎲 Одиночная игра", async (ctx) => {
-    const dice = Math.floor(Math.random() * 6) + 1;
-    await ctx.reply(`🎲 Ваш результат: ${dice}`);
-});
-
-// Возвращение в главное меню
-bot.hears("🔙 Назад", async (ctx) => {
-    await ctx.reply("Выберите игру:", {
-        reply_markup: {
-            keyboard: [
-                [{ text: "🎲 Кости" }],
-                [{ text: "🔙 Назад" }]
-            ],
-            resize_keyboard: true
-        }
-    });
-});
+// Подключаем обработчики команд и игр
+handleCommands(bot);
 
 bot.launch();
 console.log("Бот запущен!");
